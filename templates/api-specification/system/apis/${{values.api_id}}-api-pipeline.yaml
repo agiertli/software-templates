@@ -8,20 +8,20 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/contract-first-idp/${{values.application.split("/")[1]}}-${{ values.api_id }}-api
+    repoURL: https://github.com/agiertli/${{values.application.split("/")[1]}}-${{ values.api_id }}-api
     targetRevision: HEAD
     path: .tekton
   destination:
     server: https://kubernetes.default.svc
     namespace: ${{values.application.split("/")[1]}}-build
   syncPolicy:
-    automated: 
+    automated:
       prune: true
       selfHeal: true
     syncOptions:
-    - CreateNamespace=false
-    - RespectIgnoreDifferences=true
-    - ApplyOutOfSyncOnly=true
+      - CreateNamespace=false
+      - RespectIgnoreDifferences=true
+      - ApplyOutOfSyncOnly=true
     retry:
       backoff:
         duration: 5s

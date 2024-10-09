@@ -8,25 +8,25 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/contract-first-idp/developer-charts
+    repoURL: https://github.com/agiertli/developer-charts
     targetRevision: HEAD
     path: spring-boot-pipeline
     helm:
       values: |
-        domain: contract-first-idp
+        domain: agiertli
         system: ${{values.application.split("/")[1]}}
         component: ${{ values.component_id }}
   destination:
     server: https://kubernetes.default.svc
     namespace: ${{values.application.split("/")[1]}}-build
   syncPolicy:
-    automated: 
+    automated:
       prune: true
       selfHeal: true
     syncOptions:
-    - CreateNamespace=false
-    - RespectIgnoreDifferences=true
-    - ApplyOutOfSyncOnly=true
+      - CreateNamespace=false
+      - RespectIgnoreDifferences=true
+      - ApplyOutOfSyncOnly=true
     retry:
       backoff:
         duration: 5s

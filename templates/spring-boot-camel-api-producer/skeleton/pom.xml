@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    
+
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>${{ values.java_group_id }}</groupId>
@@ -7,7 +7,7 @@
     <packaging>jar</packaging>
     <version>1.0.0-SNAPSHOT</version>
     <name>${{ values.component_id }}</name>
-  
+
     <properties>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
       <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -18,7 +18,7 @@
       <maven.compiler.source>${java.version}</maven.compiler.source>
       <maven.compiler.target>${java.version}</maven.compiler.target>
     </properties>
-  
+
     <dependencyManagement>
       <dependencies>
         <!-- Camel BOM -->
@@ -39,9 +39,9 @@
         </dependency>
       </dependencies>
     </dependencyManagement>
-  
+
     <dependencies>
-  
+
       <!-- Spring Boot -->
       <dependency>
         <groupId>org.springframework.boot</groupId>
@@ -61,7 +61,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-actuator</artifactId>
       </dependency>
-  
+
       <dependency>
         <groupId>org.apache.camel.springboot</groupId>
         <artifactId>camel-spring-boot-starter</artifactId>
@@ -106,7 +106,7 @@
         <groupId>org.apache.camel.springboot</groupId>
         <artifactId>camel-openapi-java-starter</artifactId>
       </dependency>
-  
+
       <!--
       This dependency is mandatory for enabling Camel management
       via JMX / Hawtio.
@@ -135,7 +135,7 @@
         <artifactId>jackson-databind-nullable</artifactId>
         <version>0.2.6</version>
       </dependency>
-  
+
       <!-- Test -->
       <dependency>
         <groupId>org.springframework.boot</groupId>
@@ -148,7 +148,7 @@
         <scope>test</scope>
       </dependency>
     </dependencies>
-  
+
     <build>
       <plugins>
         <plugin>
@@ -166,7 +166,7 @@
                       <library>spring-boot</library>
                       <output>${project.basedir}/target/generated-sources</output>
                       <inputSpec>
-                          https://raw.githubusercontent.com/contract-first-idp/${{values.application.split("/")[1]}}-${{ values.api_id }}-api/main/specification.yaml
+                          https://raw.githubusercontent.com/agiertli/${{values.application.split("/")[1]}}-${{ values.api_id }}-api/main/specification.yaml
                       </inputSpec>
                       <generateModels>true</generateModels>
                       <generateModelDocumentation>false</generateModelDocumentation>
@@ -211,5 +211,5 @@
         </plugin>
       </plugins>
     </build>
-  
+
 </project>

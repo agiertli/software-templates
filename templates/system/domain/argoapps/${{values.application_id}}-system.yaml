@@ -4,11 +4,11 @@ metadata:
   name: ${{values.application_id}}-system
   namespace: openshift-gitops
   finalizers:
-  - resources-finalizer.argocd.argoproj.io
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
-    repoURL: https://github.com/contract-first-idp/${{values.application_id}}-system.git
+    repoURL: https://github.com/agiertli/${{values.application_id}}-system.git
     path: "."
     directory:
       include: "*/*.yaml"
@@ -17,12 +17,12 @@ spec:
     server: https://kubernetes.default.svc
     namespace: openshift-gitops
   syncPolicy:
-    automated: 
+    automated:
       prune: true
       selfHeal: true
       allowEmpty: true
     syncOptions:
-    - CreateNamespace=false
+      - CreateNamespace=false
     retry:
       limit: 0
       backoff:

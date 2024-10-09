@@ -29,11 +29,10 @@ spec:
           description: Owner of this applications
           ui:field: OwnerPicker
           ui:options:
-            allowedKinds: 
+            allowedKinds:
               - Group
 
   steps:
-
     - id: template-system
       name: render system mainfiest
       action: fetch:template
@@ -49,9 +48,9 @@ spec:
       name: publish system manifest repository
       action: publish:github
       input:
-        allowedHosts: ['github.com']
+        allowedHosts: ["github.com"]
         description: GitOps manifest for ${{ parameters.application_id }}
-        repoUrl: github.com?repo=${{ parameters.application_id }}-system&owner=contract-first-idp
+        repoUrl: github.com?repo=${{ parameters.application_id }}-system&owner=agiertli
         repoVisibility: public
         defaultBranch: main
         deleteBranchOnMerge: true
@@ -67,13 +66,13 @@ spec:
           application_id: ${{ parameters.application_id }}
           description: ${{ parameters.description }}
           owner: ${{ parameters.owner }}
-        targetPath: ./domain-gitops  
+        targetPath: ./domain-gitops
 
     - id: pull-request-to-domain
       name: open domain pull request
       action: publish:github:pull-request
       input:
-        repoUrl: github.com?repo=demo-domain&owner=contract-first-idp
+        repoUrl: github.com?repo=demo-domain&owner=agiertli
         branchName: ${{ parameters.application_id }}
         title: add ${{ parameters.application_id }} system
         description: add ${{ parameters.application_id }} system

@@ -8,7 +8,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/contract-first-idp/developer-charts
+    repoURL: https://github.com/agiertli/developer-charts
     targetRevision: HEAD
     path: spring-boot-application
     helm:
@@ -22,13 +22,13 @@ spec:
     server: https://kubernetes.default.svc
     namespace: ${{values.application.split("/")[1]}}-dev
   syncPolicy:
-    automated: 
+    automated:
       prune: true
       selfHeal: true
     syncOptions:
-    - CreateNamespace=false
-    - RespectIgnoreDifferences=true
-    - ApplyOutOfSyncOnly=true
+      - CreateNamespace=false
+      - RespectIgnoreDifferences=true
+      - ApplyOutOfSyncOnly=true
     retry:
       backoff:
         duration: 5s

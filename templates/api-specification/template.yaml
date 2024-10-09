@@ -30,7 +30,7 @@ spec:
           description: Owner of the API
           ui:field: OwnerPicker
           ui:options:
-            allowedKinds: 
+            allowedKinds:
               - Group
         application:
           title: System
@@ -39,7 +39,7 @@ spec:
           ui:field: OwnedEntityPicker
           ui:options:
             allowedKinds:
-            - System
+              - System
         mock_provider_url:
           title: Mock Provider URL
           type: string
@@ -67,7 +67,7 @@ spec:
           description: ${{ parameters.description }}
           mock_provider_url: ${{ parameters.mock_provider_url }}
           owner: ${{ parameters.owner }}
-          destination: https://github.com/contract-first-idp/${{ parameters.application.split("/")[1] }}-${{ parameters.api_id }}-api
+          destination: https://github.com/agiertli/${{ parameters.application.split("/")[1] }}-${{ parameters.api_id }}-api
           application: ${{ parameters.application }}
           service_registry_provider_url: ${{ parameters.service_registry_provider_url }}
           group_id: ${{ parameters.group_id }}
@@ -76,9 +76,9 @@ spec:
       name: publish API specification repository
       action: publish:github
       input:
-        allowedHosts: ['github.com']
+        allowedHosts: ["github.com"]
         description: This is ${{ parameters.api_id }}
-        repoUrl: github.com?repo=${{ parameters.application.split("/")[1] }}-${{ parameters.api_id }}-api&owner=contract-first-idp
+        repoUrl: github.com?repo=${{ parameters.application.split("/")[1] }}-${{ parameters.api_id }}-api&owner=agiertli
         repoVisibility: public
         defaultBranch: main
         deleteBranchOnMerge: true
@@ -99,7 +99,7 @@ spec:
       name: open system pull request
       action: publish:github:pull-request
       input:
-        repoUrl: github.com?repo=${{ parameters.application.split("/")[1] }}-system&owner=contract-first-idp
+        repoUrl: github.com?repo=${{ parameters.application.split("/")[1] }}-system&owner=agiertli
         branchName: ${{ parameters.api_id }}-api
         title: add ${{ parameters.api_id }} API
         description: add ${{ parameters.api_id}} API
